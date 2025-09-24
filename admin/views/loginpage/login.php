@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giriş Yap - Otopark Admin Paneli</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/loginpage.css">
 </head>
+
 <body>
 
     <div class="login-container">
-        
+
         <div class="login-card">
             <div class="card-header">
                 <i class="fas fa-parking"></i>
@@ -19,7 +23,7 @@
                 <p>Yönetici Paneline Giriş Yap</p>
             </div>
 
-            <form class="login-form">
+            <form method="POST" action="../../islem/islem.php" class="login-form">
                 <div class="form-group">
                     <label for="username">Kullanıcı Adı</label>
                     <div class="input-icon">
@@ -38,12 +42,12 @@
 
                 <div class="form-options">
                     <label class="remember-me">
-                       
+
                     </label>
                     <a href="#">Şifremi Unuttum?</a>
                 </div>
 
-                <button type="submit" class="login-btn">
+                <button name="admingiris" type="submit" class="login-btn">
                     Giriş Yap <i class="fas fa-arrow-right-to-bracket"></i>
                 </button>
             </form>
@@ -52,4 +56,5 @@
     </div>
 
 </body>
+
 </html>

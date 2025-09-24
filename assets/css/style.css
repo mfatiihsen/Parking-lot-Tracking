@@ -1,0 +1,384 @@
+/* Renk Paleti ve Genel Ayarlar */
+:root {
+  --primary-bg: #1a1a2e;
+  --secondary-bg: #2b2d42;
+  --accent-color: #00adb5;
+  --text-color: #eeeeee;
+  --card-bg: rgba(
+    43,
+    45,
+    66,
+    0.5
+  ); /* Kart arka planı biraz daha şeffaf olabilir */
+  --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow: hidden; /* Sayfanın taşmasını engeller */
+}
+
+/* Sayfa Konteyneri - Arka Plan Resmi Buraya */
+.user-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative; /* Overlay ve kartı konumlandırmak için */
+  background: url("../images/otopark.jpg") no-repeat center center / cover; /* Konsepte uygun görsel */
+}
+
+/* Arka Plan Üzerine Şeffaf Katman (Overlay) */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Görseli koyulaştırır ve okunabilirliği artırır */
+  backdrop-filter: blur(5px); /* Hafif bulanıklık efekti */
+  z-index: 1; /* Kartın altında kalmalı */
+}
+
+/* Ana Kart Stili */
+.user-card {
+  position: relative; /* Overlay'in üstünde olması için */
+  z-index: 2; /* Overlay'in üstünde */
+  background: var(--card-bg); /* Yarı saydam arka plan */
+  backdrop-filter: blur(10px); /* Karta bulanıklık efekti */
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.user-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.user-logo i {
+  font-size: 2.5rem;
+}
+
+.user-logo h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.user-card .card-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.user-card .card-subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+/* Form ve Input Stilleri */
+.plate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Buton Stili */
+.submit-button {
+  width: 100%;
+  background: var(--accent-color);
+  color: var(--primary-bg);
+  border: none;
+  padding: 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #16a085;
+  transform: translateY(-2px);
+}
+
+.submit-button i {
+  margin-right: 0.5rem;
+}
+
+/* Mobil için Ayarlamalar */
+@media (max-width: 600px) {
+  .user-card {
+    padding: 2rem 1.5rem;
+  }
+  .user-logo h1 {
+    font-size: 1.5rem;
+  }
+  .user-logo i {
+    font-size: 2rem;
+  }
+}
+
+/* ... (Mevcut user-style.css kodlarınız) ... */
+
+/* Sonuç Kartına Özel Ayarlar */
+.result-card {
+  max-width: 600px; /* Daha geniş olabilir */
+}
+
+/* Detay Listesi */
+.result-details {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05); /* Daha hafif bir ayırıcı */
+}
+
+.detail-item:last-of-type {
+  border-bottom: none;
+}
+
+.detail-item span {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-item strong {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Durum Metni Renkleri */
+.status-parked {
+  color: var(--accent-color); /* Turkuaz */
+}
+
+.status-exited {
+  color: #ff5722; /* Kırmızımsı turuncu */
+}
+
+/* Ücret Alanı */
+.price-item strong {
+  font-size: 1.5rem; /* Ücreti daha belirgin yap */
+  color: var(--accent-color);
+}
+
+/* Ödeme Butonu */
+.pay-button {
+  margin-top: 2rem;
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+/* Plaka Bulunamadı Mesajı */
+.not-found-message {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: rgba(255, 87, 34, 0.1); /* Hafif kırmızı arka plan */
+  border-radius: 8px;
+  color: #ff5722;
+  font-size: 1.1rem;
+}
+
+.not-found-message i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block; /* İkonun ayrı satırda durması için */
+}
+
+.not-found-message p {
+  margin-bottom: 1.5rem;
+}
+
+.back-button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ... (Mevcut user-style.css kodlarınız) ... */
+
+/* Sonuç Kartına Özel Ayarlar */
+.result-card {
+  max-width: 600px; /* Daha geniş olabilir */
+}
+
+/* Detay Listesi */
+.result-details {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.05); /* Daha hafif bir ayırıcı */
+}
+
+.detail-item:last-of-type {
+  border-bottom: none;
+}
+
+.detail-item span {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-item strong {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Durum Metni Renkleri */
+.status-parked {
+  color: var(--accent-color); /* Turkuaz */
+}
+
+.status-exited {
+  color: #ff5722; /* Kırmızımsı turuncu */
+}
+
+/* Ücret Alanı */
+.price-item strong {
+  font-size: 1.5rem; /* Ücreti daha belirgin yap */
+  color: var(--accent-color);
+}
+
+/* Ödeme Butonu */
+.pay-button {
+  margin-top: 2rem;
+  background-color: var(--accent-color);
+  color: var(--primary-bg);
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+/* Plaka Bulunamadı Mesajı */
+.not-found-message {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: rgba(255, 87, 34, 0.1); /* Hafif kırmızı arka plan */
+  border-radius: 8px;
+  color: #ff5722;
+  font-size: 1.1rem;
+}
+
+.not-found-message i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block; /* İkonun ayrı satırda durması için */
+}
+
+.not-found-message p {
+  margin-bottom: 1.5rem;
+}
+
+.back-button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

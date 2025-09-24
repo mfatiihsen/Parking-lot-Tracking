@@ -1,3 +1,6 @@
+<?php require_once '../../auth/checkAuth.php' ?>
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <?php include("_head.php"); ?>
@@ -19,4 +22,5 @@
     <?php include('_script.php'); ?>
 
 </body>
+
 </html>

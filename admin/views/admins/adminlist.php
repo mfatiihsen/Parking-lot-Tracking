@@ -1,5 +1,25 @@
 <?php
-$title = "Müşteriler";
+
+require_once '../../islem/conn.php';
+
+
+$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+
+if ($searchQuery) {
+    $admin = $baglanti->prepare("SELECT * FROM  admin WHERE name LIKE :search ORDER BY id ASC");
+    $admin->bindValue(':search', '%' . $searchQuery . '%');
+} else {
+    $admin = $baglanti->prepare("SELECT * FROM admin ORDER BY id ASC");
+}
+
+
+
+$admin->execute();
+$admins = $admin->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+<?php
+$title = "Kullanıcılar";
 ob_start();
 ?>
 
@@ -10,12 +30,17 @@ ob_start();
     <p class="subtitle">Sistemdeki tüm yönetici hesaplarını buradan yönetin.</p>
 
     <div class="control-panel">
+
         <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Yönetici ara...">
+            <form action="#" method="GET">
+                <i class="fas fa-search"></i>
+                <input value="<?php echo htmlspecialchars($searchQuery) ?>" type="text" name="search" id="search"
+                    placeholder="Yönetici ara...">
+            </form>
         </div>
-        <button class="add-button">
-            <i class="fas fa-plus"></i> Yeni Yönetici Ekle
+
+        <button onclick="window.location.href='adminadd.php'" class="add-button">
+            <i class="fas fa-plus"></i> Yeni Giriş Ekle
         </button>
     </div>
 
@@ -23,44 +48,40 @@ ob_start();
         <table>
             <thead>
                 <tr>
-                    <th>Ad Soyad</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Kullanıcı Adı</th>
                     <th>E-posta</th>
+                    <th>Telefon</th>
                     <th>Yetki</th>
-                    <th>Durum</th>
                     <th>İşlemler</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Ahmet Yılmaz</td>
-                    <td>ahmet.yilmaz@parkhub.com</td>
-                    <td>Süper Admin</td>
-                    <td><span class="status-active">Aktif</span></td>
-                    <td>
-                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                        <button class="action-btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ayşe Demir</td>
-                    <td>ayse.demir@parkhub.com</td>
-                    <td>Yönetici</td>
-                    <td><span class="status-active">Aktif</span></td>
-                    <td>
-                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                        <button class="action-btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Mehmet Öztürk</td>
-                    <td>mehmet.ozturk@parkhub.com</td>
-                    <td>Personel</td>
-                    <td><span class="status-inactive">Pasif</span></td>
-                    <td>
-                        <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
-                        <button class="action-btn delete-btn"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
+                <?php
+                if ($admins) {
+                    foreach ($admins as $admin) {
+                        ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($admin['name']) ?></td>
+                            <td><?php echo htmlspecialchars($admin['surname']) ?></td>
+                            <td><?php echo htmlspecialchars($admin['username']) ?></td>
+                            <td><?php echo htmlspecialchars($admin['mail']) ?></td>
+                            <td><?php echo htmlspecialchars($admin['phone']) ?></td>
+                            <td><?php echo htmlspecialchars($admin['authority']) ?></td>
+                            <td>
+                                <a href="../../islem/islem.php?adminsil&id=<?php echo $admin['id'] ?>">
+                                    <button class='action-btn delete-btn'><i class='fas fa-trash-alt'></i></button></a>
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>Kayıtlı yönetici bulunamadı.</td></tr>";
+                }
+
+                ?>
             </tbody>
         </table>
     </div>
