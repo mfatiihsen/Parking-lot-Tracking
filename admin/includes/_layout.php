@@ -1,4 +1,6 @@
-<?php require_once '../../auth/checkAuth.php' ?>
+<?php
+require_once '../../auth/checkAuth.php';
+ ?>
 
 
 <!DOCTYPE html>

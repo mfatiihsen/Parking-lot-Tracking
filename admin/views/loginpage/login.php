@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap - Otopark Admin Paneli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Yönetici Paneli</title>
+    <link rel="icon" type="image/png" href="../../assets/images/logo2.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -44,11 +45,11 @@
                     <label class="remember-me">
 
                     </label>
-                    <a href="#">Şifremi Unuttum?</a>
+
                 </div>
 
                 <button name="admingiris" type="submit" class="login-btn">
-                    Giriş Yap <i class="fas fa-arrow-right-to-bracket"></i>
+                    Giriş Yap
                 </button>
             </form>
         </div>

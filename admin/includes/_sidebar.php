@@ -12,8 +12,6 @@
             <li><a href="../admins/adminlist.php"
                     class="<?php echo ($current_page == 'kullanicilar') ? 'active' : ''; ?>"><i
                         class="fas fa-user-group"></i> Kullanıcılar</a></li>
-            <li><a href="ayarlar.php" class="<?php echo ($current_page == 'ayarlar') ? 'active' : ''; ?>"><i
-                        class="fas fa-gear"></i> Ayarlar</a></li>
             <form id="logoutForm" action="../../islem/islem.php" method="post" style="display: none;">
                 <input type="hidden" name="logout" value="1">
             </form>

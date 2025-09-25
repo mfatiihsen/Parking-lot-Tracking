@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParkHub - Plaka Sorgulama</title>
+    <title>ParkHub - Park Ücreti Sorgulama</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
+     <link rel="icon" type="image/png" href="assets/images/logo2.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

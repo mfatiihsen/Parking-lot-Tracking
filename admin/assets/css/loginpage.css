@@ -1,195 +1,476 @@
 /* Genel Ayarlar */
 :root {
-    --primary-color: #0b1a2e; /* Koyu Mavi */
-    --accent-color: #1abc9c; /* Zümrüt Yeşili */
-    --text-color: #f0f2f5; /* Açık Gri */
-    --bg-color: #122137; /* Çok Koyu Mavi */
-    --dark-bg: rgba(18, 33, 55, 0.8);
-    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --primary-color: #0b1a2e;
+  --accent-color: #1abc9c;
+  --text-color: #f0f2f5;
+  --bg-color: #122137;
+  --dark-bg: rgba(18, 33, 55, 0.95);
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Taşmaları engelle */
-    position: relative;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
-/* Arka Plan Efektleri */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.5;
-    z-index: -1;
+/* Arka Plan Efektleri - Mobilde performans için sadeleştirildi */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  z-index: -1;
 }
 
 body::before {
-    background: var(--accent-color);
-    width: 300px;
-    height: 300px;
-    top: -50px;
-    left: -50px;
+  background: var(--accent-color);
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  left: -50px;
 }
 
 body::after {
-    background: var(--primary-color);
-    width: 400px;
-    height: 400px;
-    bottom: -100px;
-    right: -100px;
+  background: var(--primary-color);
+  width: 250px;
+  height: 250px;
+  bottom: -80px;
+  right: -80px;
 }
 
-/* Giriş Kartı */
+/* Giriş Kartı - Mobil için optimize edildi */
+.login-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .login-card {
-    background: var(--dark-bg);
-    backdrop-filter: blur(15px);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--dark-bg);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transform: scale(1);
+  transition: all 0.3s ease;
 }
 
 .card-header {
-    margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .card-header i {
-    font-size: 3rem;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
+  font-size: 3.5rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .card-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    color: var(--text-color);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: var(--text-color);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
 }
 
 .card-header .highlight {
-    color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .card-header p {
-    font-size: 0.9rem;
-    color: #b0c4de;
-    margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #b0c4de;
+  opacity: 0.9;
 }
 
-/* Form */
+/* Form Stilleri - Büyütülmüş */
+.login-form {
+  margin-top: 2rem;
+}
+
 .login-form .form-group {
-    margin-bottom: 1.5rem;
-    text-align: left;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .login-form .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: #b0c4de;
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  color: #b0c4de;
+  font-weight: 500;
 }
 
 .input-icon {
-    position: relative;
+  position: relative;
 }
 
 .input-icon i {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent-color);
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  font-size: 1.3rem;
+  z-index: 2;
 }
 
 .login-form input {
-    width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: all 0.3s ease;
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
+  height: auto;
+  min-height: 56px;
 }
 
 .login-form input:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.5);
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .login-form input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
 }
 
 .form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .form-options a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .form-options a:hover {
-    color: #fff;
-}
-
-.remember-me {
-    color: #b0c4de;
-}
-
-.remember-me input {
-    margin-right: 0.5rem;
+  color: #fff;
+  text-decoration: underline;
 }
 
 .login-btn {
-    width: 100%;
-    padding: 1rem;
-    background: var(--accent-color);
-    border: none;
-    border-radius: 8px;
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  width: 100%;
+  padding: 1.3rem;
+  background: var(--accent-color);
+  border: none;
+  border-radius: 12px;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-family: "Poppins", sans-serif;
+  min-height: 60px;
 }
 
 .login-btn:hover {
-    background: #16a085;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(26, 188, 156, 0.4);
+  background: #16a085;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
 }
 
-/* Responsive Düzenleme */
+.login-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Düzenlemeler */
+
+/* Tablet (768px ve altı) */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .login-card {
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+  }
+
+  .card-header i {
+    font-size: 3.2rem;
+  }
+
+  .card-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .login-form input {
+    font-size: 1.2rem;
+    padding: 1.1rem 1.1rem 1.1rem 3.2rem;
+    min-height: 54px;
+  }
+
+  .input-icon i {
+    font-size: 1.2rem;
+    left: 1.1rem;
+  }
+
+  .login-btn {
+    font-size: 1.2rem;
+    padding: 1.2rem;
+    min-height: 56px;
+  }
+}
+
+/* Mobil (480px ve altı) - BÜYÜK YAZILAR */
 @media (max-width: 480px) {
-    .login-card {
-        padding: 2rem 1rem;
-    }
+  body {
+    padding: 12px;
+    font-size: 20px;
+    min-height: 100vh;
+    align-items: center;
+  }
+
+  .login-container {
+    max-width: 100%;
+  }
+
+  .login-card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+    margin: 0;
+    transform: scale(1);
+  }
+
+  .card-header {
+    margin-bottom: 2rem;
+  }
+
+  .card-header i {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .card-header p {
+    font-size: 1rem;
+  }
+
+  .login-form .form-group {
+    margin-bottom: 1.8rem;
+  }
+
+  .login-form .form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .login-form input {
+    font-size: 1.1rem;
+    padding: 1rem 1rem 1rem 3rem;
+    min-height: 52px;
+    border-radius: 10px;
+  }
+
+  .input-icon i {
+    font-size: 1.1rem;
+    left: 1rem;
+  }
+
+  .form-options {
+    margin-bottom: 2rem;
+  }
+
+  .form-options a {
+    font-size: 0.95rem;
+  }
+
+  .login-btn {
+    font-size: 1.1rem;
+    padding: 1.1rem;
+    min-height: 54px;
+    border-radius: 10px;
+  }
+}
+
+/* Küçük Mobil (360px ve altı) */
+@media (max-width: 360px) {
+  body {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .login-card {
+    padding: 1.8rem 1.2rem;
+    border-radius: 14px;
+  }
+
+  .card-header i {
+    font-size: 2.8rem;
+  }
+
+  .card-header h1 {
+    font-size: 2rem;
+  }
+
+  .login-form input {
+    font-size: 1rem;
+    padding: 0.9rem 0.9rem 0.9rem 2.8rem;
+    min-height: 50px;
+  }
+
+  .input-icon i {
+    left: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .login-btn {
+    font-size: 1rem;
+    padding: 1rem;
+    min-height: 52px;
+  }
+}
+
+/* Yatay mod (Landscape) */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+    min-height: auto;
+    height: auto;
+  }
+
+  .login-container {
+    max-width: 90%;
+    margin: 20px auto;
+  }
+
+  .login-card {
+    padding: 1.5rem 2rem;
+  }
+
+  .card-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-header i {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-header h1 {
+    font-size: 2rem;
+  }
+
+  .login-form .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .login-form input {
+    padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+    min-height: 46px;
+  }
+}
+
+/* Çok yüksek çözünürlük */
+@media (min-width: 1400px) {
+  body {
+    font-size: 18px;
+  }
+
+  .login-container {
+    max-width: 450px;
+  }
+}
+
+/* Erişilebilirlik */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* iOS Safari için özel stiller */
+@supports (-webkit-touch-callout: none) {
+  .login-form input {
+    font-size: 16px; /* iOS zoom'u engellemek için */
+  }
+}
+
+/* Touch device için optimize */
+@media (hover: none) and (pointer: coarse) {
+  .login-btn:hover {
+    transform: none;
+  }
+
+  .login-form input:focus {
+    transform: none;
+  }
+}
+
+@media (min-width: 1600px) {
+  .login-container {
+    max-width: 600px; /* Kart daha geniş */
+    margin: 0 auto; /* Ortalanmış */
+  }
+
+  .login-card {
+    padding: 3rem 3rem; /* İçerik için daha fazla boşluk */
+    border-radius: 24px;
+    transform: scale(1); /* Daha düzgün görünüm */
+  }
+
+  .card-header h1 {
+    font-size: 3.2rem; /* Başlık daha büyük */
+  }
+
+  .login-form input {
+    padding: 1.3rem 1.3rem 1.3rem 3.5rem; /* Input genişliği artıyor */
+    font-size: 1.2rem;
+  }
+
+  .login-btn {
+    padding: 1.4rem;
+    font-size: 1.4rem;
+    min-height: 64px;
+  }
 }
