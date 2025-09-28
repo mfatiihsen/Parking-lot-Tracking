@@ -1,4 +1,8 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
+?>
+
+<?php
 require_once '../../data/db.php'; // PDO bağlantısı
 date_default_timezone_set('Europe/Istanbul');
 
@@ -6,7 +10,12 @@ date_default_timezone_set('Europe/Istanbul');
 $plaka = strtoupper($_POST['plate'] ?? '');
 
 // Plaka sorgulama
-$stmt = $baglanti->prepare("SELECT * FROM cars WHERE plate = ?");
+$stmt = $baglanti->prepare("
+    SELECT * FROM cars 
+    WHERE plate = ? 
+    ORDER BY id DESC 
+    LIMIT 1
+");
 $stmt->execute([$plaka]);
 $arac_bilgisi = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -63,10 +72,13 @@ if ($arac_bilgisi && $arac_bilgisi['situation'] == 'Giriş') {
             <?php if ($arac_bilgisi): ?>
                 <div class="result-details">
                     <div class="detail-item"><span>Plaka:</span>
-                        <strong><?= htmlspecialchars($arac_bilgisi['plate']) ?></strong>
+                        <strong style="font-weight: bold;text-decoration: underline;"><?= htmlspecialchars($arac_bilgisi['plate']) ?></strong>
                     </div>
                     <div class="detail-item"><span>Marka/Model:</span>
                         <strong><?= htmlspecialchars($arac_bilgisi['brand']) ?></strong>
+                    </div>
+                    <div class="detail-item"><span>Araç Tipi:</span>
+                        <strong><?= htmlspecialchars($arac_bilgisi['type']) ?></strong>
                     </div>
 
                     <?php if ($arac_bilgisi['situation'] == 'Giriş'): ?>

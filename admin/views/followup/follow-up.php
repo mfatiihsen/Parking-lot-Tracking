@@ -250,7 +250,7 @@ ob_start();
                 <?php if ($cars): ?>
                     <?php foreach ($cars as $car): ?>
                         <tr>
-                            <td><?= htmlspecialchars($car['plate']) ?></td>
+                            <td style="font-weight: 800;"><?= htmlspecialchars($car['plate']) ?></td>
                             <td><?= htmlspecialchars($car['type']) ?></td>
                             <td><?= htmlspecialchars($car['brand']) ?></td>
                             <td><?= date("d.m.Y H:i", strtotime($car['entrance'])) ?></td>

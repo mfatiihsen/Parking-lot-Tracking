@@ -36,7 +36,7 @@ if (isset($_POST['admingiris'])) {
         $_SESSION['girisbelgesi'] = $username;
         $_SESSION['girisbelgesi'] = true;
 
-        header('Location:../views/home/index.php');
+        header('Location:../views/home/index.php?giris=basarili');
     } else {
         header('Location:../views/loginpage/login.php?giris=basarisiz');
     }
@@ -171,6 +171,8 @@ if (isset($_POST["caradd"])) {
 
     // OTOMATİK ZAMAN - FORM ZAMANINI TAMAMEN KALDIR
     $entrance = date('Y-m-d H:i:s');
+
+    
 
     $sql = "INSERT INTO cars (plate, brand, entrance, type, situation) 
             VALUES (:plate, :brand, :entrance, :type, :situation)";

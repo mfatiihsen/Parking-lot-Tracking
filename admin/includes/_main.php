@@ -116,7 +116,7 @@ for ($hour = 0; $hour < 24; $hour++) {
                     <tbody>
                         <?php foreach ($events as $event): ?>
                             <tr>
-                                <td><?= htmlspecialchars($event['plate']) ?></td>
+                                <td style="font-weight: 800;"><?= htmlspecialchars($event['plate']) ?></td>
                                 <td>
                                     <?php if ($event['situation'] == 'Giriş'): ?>
                                         <span class="status-entry">Giriş</span>
